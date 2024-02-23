@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        overflow: hidden;
+      }
+      article {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 86px;
+      }
+      #s0 {
+        background-color: #f88;
+      }
+      #s1 {
+        background-color: #8f8;
+        position: absolute;
+        top: 100%;
+      }
+      #s2 {
+        background-color: #88f;
+        position: absolute;
+        top: 100%;
+      }
+      #s3 {
+        background-color: #ff8;
+        position: absolute;
+        top: 100%;
+      }
+    </style>
+    <script async>
+      document.addEventListener("wheel", (e) => {
+        const [s0, s1, s2, s3] = [
+          document.getElementById("s0"),
+          document.getElementById("s1"),
+          document.getElementById("s2"),
+          document.getElementById("s3"),
+        ];
+        const direction = e.deltaY > 0 ? "down" : "up";
+        if (direction === "down") {
+          s1.animate(
+            {
+              top: "0%",
+            },
+            {
+              duration: 300,
+              fill: "forwards",
+            }
+          );
+          setTimeout(() => {
+            s2.animate(
+              {
+                top: "0%",
+              },
+              {
+                duration: 150,
+                fill: "forwards",
+              }
+            );
+            setTimeout(() => {
+              s3.animate(
+                {
+                  top: "0%",
+                },
+                {
+                  duration: 300,
+                  fill: "forwards",
+                }
+              );
+            }, 200);
+          }, 200);
+        }
+        });
+        if (direction === "up") {
+          console.log(direction);
+          s1.animate(
+            {
+              top: "100%",
+            },
+            {
+              duration: 150,
+              fill: "forwards",
+            }
+          );
+          setTimeout(() => {
+            s2.animate(
+              {
+                top: "100%",
+              },
+              {
+                duration: 150,
+                fill: "forwards",
+              }
+            );
+            setTimeout(() => {
+              s3.animate(
+                {
+                  top: "100%",
+                },
+                {
+                  duration: 100,
+                  fill: "forwards",
+                }
+              );
+            }, 200);
+          }, 200);
+        }
+    </script>
+  </head>
+  <body>
+    <article id="s0">1</article>
+    <article id="s1"></article>
+    <article id="s2"></article>
+    <article id="s3">2</article>
+  </body>
+</html>
